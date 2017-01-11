@@ -21,7 +21,7 @@ def main(input_file):
 def read_file(input_file):
     """Reads input file as CSV."""
     # 0 means there's a header
-    input_data = pd.read_csv('input.csv', header=0)
+    input_data = pd.read_csv(input_file, header=0)
     return input_data
 
 
