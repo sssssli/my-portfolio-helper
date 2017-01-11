@@ -112,8 +112,8 @@ def gen_output(input_file, input_data, price_list, time_pulled, market_val,
     """
     output = pd.concat([time_pulled, input_data['ticker'], price_list,
                         input_data['shares'], input_data['currency'],
-                        market_val, market_val_cad, market_val_usd,
-                        input_data['account']], axis=1)
+                        market_val.round(2), market_val_cad.round(2),
+                        market_val_usd.round(2), input_data['account']], axis=1)
     output.columns = ['time_pulled', 'ticker', 'current_price',
                     'shares', 'currency', 'tot_market_value',
                     'tot_market_adj_cad', 'tot_market_adj_usd', 'account']
