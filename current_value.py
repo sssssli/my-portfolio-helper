@@ -19,7 +19,11 @@ def main(input_file):
                 market_val_cad, market_val_usd)
 
 def read_file(input_file):
-    """Reads input file as CSV."""
+    """
+    Reads input file as CSV.
+    Args:
+        input_file (string)
+    """
     # 0 means there's a header
     input_data = pd.read_csv(input_file, header=0)
     return input_data
@@ -33,7 +37,7 @@ def get_price_list(input_data):
         input_data (pandas dataframe)
 
     Returns:
-        price_list, price of all tickers (list)
+        price_list, price of all tickers (pandas series)
         time_pulled, time pulled for all tickers (pandas series)
 
     """
@@ -58,12 +62,12 @@ def market_value_cal(input_data, price_list):
 
     Args:
         input_data (pandas dataframe)
-        price_list, this is the updated ticker price (list)
+        price_list, this is the updated ticker price (pandas series)
 
     Returns:
-        market_value
-        market_value_cad (numpy array)
-        market_value_usd (numpy array)
+        market_value (pandas series)
+        market_value_cad (pandas series)
+        market_value_usd (pandas series)
 
     """
 
@@ -97,6 +101,7 @@ def gen_output(input_file, input_data, price_list, time_pulled, market_val,
     Generates the output CSV.
 
     Args:
+        input_file (string)
         input_data (dataframe)
         price_list (pandas series)
         time_pulled (pandas series)
