@@ -10,7 +10,6 @@ Currently only supporting CAD/USD conversions.
 1. Clone this repo.
 2. Follow the [input_example.csv](https://github.com/sssssli/my-portfolio-helper/blob/master/input_example.csv) to prepare your input CSV file. Note that all ticker notations are following Yahoo Finance's notations, including currency adjustments. Save this file in the same folder.
 3. Run the following command to update all of your tickers and generate a total summary with the following command:
-
 ```python current_value.py input_example.csv```
 
 Check out [input_example-2017-01-10.csv](https://github.com/sssssli/my-portfolio-helper/blob/master/input_example-2017-01-10.csv) as the output CSV file that you should see.
