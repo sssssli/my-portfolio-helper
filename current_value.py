@@ -1,4 +1,6 @@
-from yahoo_finance import Share
+#from yahoo_finance import Share
+import urllib
+import re
 import pandas as pd
 import numpy as np
 import sys
@@ -28,6 +30,15 @@ def read_file(input_file):
     input_data = pd.read_csv(input_file, header=0)
     return input_data
 
+def get_quote(symbol):
+    base_url = 'http://finance.google.com/finance?q='
+    content = urllib.urlopen(base_url + symbol).read()
+    m = re.search('id="ref_(.*?)">(.*?)<', content)
+    if m:
+        quote = m.group(2)
+    else:
+        quote = 'no quote available for: ' + symbol
+    return quote
 
 def get_price_list(input_data):
     """
@@ -48,7 +59,8 @@ def get_price_list(input_data):
 
     for ticker in tickers:
         if not any(ticker in item for item in exclude):
-            stock = Share(ticker)
+            print ticker
+	    stock = Share(ticker)
             price_list.append(float(stock.get_price()))
             time_pulled.append(stock.get_trade_datetime()[:10])
     price_list = pd.Series(price_list)
